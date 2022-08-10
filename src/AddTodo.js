@@ -4,7 +4,7 @@ import { TextField, Paper, Button, Grid } from '@mui/material';
 class AddTodo extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { item: { title: '' } };
+    this.state = { item: { title: "" } };
     this.add = props.add;
   }
 
@@ -17,11 +17,11 @@ class AddTodo extends React.Component {
 
   onButtonClick = () => {
     this.add(this.state.item);
-    this.setState({ item: { title: '' } });
+    this.setState({ item: { title: "" } });
   };
 
   enterKeyEventHandler = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       this.onButtonClick();
     }
   };

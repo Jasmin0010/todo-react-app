@@ -22,13 +22,11 @@ class AppRouter extends React.Component {
     return (
       <div>
         <Router>
-          <div>
             <Routes>
               <Route path='/login' element={<Login />}></Route>
               <Route path='/signup' element={<SignUp />}></Route>
-              <Route path='/todo' element={<App />}></Route>
+              <Route path='/' element={<App />}></Route>
             </Routes>
-          </div>
           <Box mt={5}>
             <Copyright />
           </Box>
