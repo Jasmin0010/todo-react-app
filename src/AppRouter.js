@@ -12,11 +12,10 @@ function Copyright() {
     <Typography variant='body2' color='textSecondary' align='center'>
       {'Copyright © '}
       fsoftwareengineer, {new Date().getFullYear()}
-      {'.'} 
+      {'.'}
     </Typography>
   );
 }
-
 
 class AppRouter extends React.Component {
   render() {
@@ -25,12 +24,9 @@ class AppRouter extends React.Component {
         <Router>
           <div>
             <Routes>
-              <Route path='/login' element = {<Login />}>
-              </Route>
-              <Route path='/signup' element = {<SignUp />}>
-              </Route>
-              <Route path='/' element = {<App />}>
-              </Route>
+              <Route path='/login' element={<Login />}></Route>
+              <Route path='/signup' element={<SignUp />}></Route>
+              <Route path='/todo' element={<App />}></Route>
             </Routes>
           </div>
           <Box mt={5}>
