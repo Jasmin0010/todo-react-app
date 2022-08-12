@@ -23,15 +23,14 @@ export function call(api, method, request) {
     options.body = JSON.stringify(request);
   }
   return fetch(options.url, options)
-    .then((response) =>
-      response.json().then((json) => {
+    .then((response) => {
         if (!response.ok) {
           // response.ok가 true이면 정상적인 리스폰스를 받은것, 아니면 에러 리스폰스를 받은것.
-          return Promise.reject(json);
+          return Promise.reject(response);
         }
-        return json;
+        return response.json();
       })
-    )
+    
     .catch((error) => {
       // 추가된 부분
       console.log(error.status);
@@ -42,15 +41,14 @@ export function call(api, method, request) {
     });
 }
 
-export function signin(userDTO) {
-  return call('/auth/signin', 'POST', userDTO).then((response) => {
-    if (response.token) {
-      // 로컬 스토리지에 토큰 저장
-      localStorage.setItem(ACCESS_TOKEN, response.token);
-      // token이 존재하는 경우 Todo 화면으로 리디렉트
-      window.location.href = '/';
-    }
-  });
+export async function signin (userDTO) {
+  const response = await call('/auth/signin', 'POST', userDTO);
+  if (response.token) {
+    // 로컬 스토리지에 토큰 저장
+    localStorage.setItem(ACCESS_TOKEN, response.token);
+    // token이 존재하는 경우 Todo 화면으로 리디렉트
+    window.location.href = '/';
+  }
 }
 
 export function signout() {
